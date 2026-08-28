@@ -1,6 +1,6 @@
 # AGENTS
 
-## 0.0 Git、分支与 worktree 收口（强制；优先于后文同类表述）
+## Git、分支、worktree 与交付收口（强制）
 
 1. 仓库默认分支为 `master`；若远端设置不同，先取证并更新规则，不得无依据使用其他集成分支。
 2. 每次可交付操作必须形成原子提交并尝试 push；提交信息使用中文/英文双语。仅修改、commit 或 push 均不等于完整任务收口。
@@ -13,7 +13,7 @@
 9. 禁止删除未合并、有独有提交或仍承担活动任务的分支。合并、push、验证、删除或清理任一步失败都必须使任务保持未完成/阻塞；批准保留时记录原因和最晚复核时间。
 10. 不使用用户级 `~/.codex/AGENTS.md` 承载共用治理。本仓库必须自行持有适用规则；根规则超过 24 KiB 时，把目录细节拆到嵌套规则或治理文档。
 
-# Repository Guidelines
+## Repository Guidelines
 
 ## 项目结构与模块组织
 - 后端位于 `src/`，入口 `src/app.py`，API 路由在 `src/api/routes/`，服务层在 `src/services/`，领域模型在 `src/domain/`，基础设施在 `src/infrastructure/`。
