@@ -2,6 +2,14 @@
 
 ## Git、分支、worktree 与交付收口（强制）
 
+### 本地分支、worktree 与引用审计
+
+1. 远端 head、本地分支 ref、remote-tracking ref、worktree 注册记录和物理目录分别核对；远端删除或 `[gone]` 不代表本地已收口。
+2. 开始/切换/合并前/收尾记录 `git status --short --branch`、`git branch -vv`、`git worktree list --porcelain`、`git remote show origin`；需要实时远端状态时执行 `git ls-remote --heads origin`。
+3. 默认分支先与对应 `origin/<default-branch>` 对账；独有提交使用 `git merge-base --is-ancestor` 或 `git rev-list --left-right --count` 判断，不能只用 `git branch --merged`。
+4. 仅已合并、无独有提交、无活动职责且未被 worktree 使用的本地分支才可删除；linked/detached worktree 先检查并用 `git worktree remove`，不得用 `rm -rf` 或 `git worktree prune` 替代。
+5. 脏/未跟踪工作区、活动测试、用户保留环境或归属未确认目录不得强制删除；清理后运行 `git fetch --prune origin`，分别验证五类状态并记录例外复核日期。
+
 1. 仓库默认分支为 `master`；若远端设置不同，先取证并更新规则，不得无依据使用其他集成分支。
 2. 每次可交付操作必须形成原子提交并尝试 push；提交信息使用中文/英文双语。仅修改、commit 或 push 均不等于完整任务收口。
 3. 除非用户明确要求仅提交、仅创建 PR、等待人工 Review 或保留分支，功能分支任务只有完成合并、默认分支 push、分支删除和 worktree 清理后才能声明完成。
