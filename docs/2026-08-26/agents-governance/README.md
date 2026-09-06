@@ -20,3 +20,4 @@
 
 - 2026-08-26：统一强制合并、分支删除和 worktree 清理语义。
 - 2026-08-28：将顶部覆盖式 Git 合同并回唯一 canonical 章节，删除重复合同，并完成单一 H1、单一 Git 合同、24 KiB 与规则前置检查。 当前根 AGENTS.md 为 5079 字节。
+- 2026-09-06：同步模板的本地分支、worktree 与引用审计规则，明确远端 head、本地 ref、remote-tracking ref、worktree 注册和物理目录的分别核验。
