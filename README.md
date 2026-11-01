@@ -1,5 +1,7 @@
 # 闲鱼智能监控系统
 
+- [Agent 浏览器资源回收规则](docs/2026-11-01/browser-lifecycle/README.md)：使用浏览器时登记归属，任务结束核对清理与保留例外。
+
 [中文] ｜ [English](README_EN.md)
 
 基于 Playwright 和 AI 的闲鱼多任务实时监控，提供完整的 Web 管理界面。

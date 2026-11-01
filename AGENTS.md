@@ -60,3 +60,7 @@
 - 复制 `.env.example` 为 `.env`，设置必填项 `OPENAI_API_KEY`、`OPENAI_BASE_URL`、`OPENAI_MODEL_NAME` 等。
 - 不要提交真实凭据或 cookies（如 `state.json`）；Playwright 需本地浏览器，Docker 镜像已预装 Chromium。
 - Web 认证默认 `admin/admin123`，生产环境务必修改，推荐启用 HTTPS 并限制访问来源。
+
+### 浏览器会话与资源回收（强制）
+
+使用 Chrome/Chromium、Playwright 或浏览器工具前，必读[浏览器资源合同](docs/2026-11-01/browser-lifecycle/README.md)。仓外登记项目、task/session、创建者、实际主机、开始时间及资源/进程身份，自建实例隔离 profile。结束关闭自建 page/context/browser；借用用户实例只关本任务新建页面。脚本用 finally/退出钩子与总超时，取消/崩溃由外层 Runner 兜底；回收先核验归属，不全局 pkill，不凭 PID、时长或内存推定。保留写明原因、负责人、复核期限，未知归属报告；交付核对残留，保护既有页面、登录态和凭据。本规则不扩大测试/部署权限，也不表示自动回收已实现。
